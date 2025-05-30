@@ -1,0 +1,57 @@
+services:
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: mssql_db
+    environment:
+      SA_PASSWORD: ${DB_SA_PASSWORD}
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Express"
+    ports:
+      - "1433:1433"
+    volumes:
+      - mssql_data:/var/opt/mssql
+      - ./init.sql:/init.sql
+      - ./entrypoint.sh:/entrypoint.sh
+    entrypoint: ["bash", "/entrypoint.sh"]
+    networks:
+      - app_network
+
+  backend:
+    build:
+      context: ./backend
+    container_name: backend_service
+    volumes:
+      - ./backend:/app # bind mount backend source code for live updates
+      - static_volume:/app/staticfiles # persistent static files
+      - media_volume:/app/media # persistent media files
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mssql
+    env_file:
+      - ./.env # assuming your .env is in project root, one level above backend folder
+    environment:
+      DJANGO_SETTINGS_MODULE: authentication.settings
+      DB_HOST: mssql
+      DB_PORT: 1433
+    networks:
+      - app_network
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: frontend_service
+    ports:
+      - "3000:80" # expose nginx on port 3000 of host
+    depends_on:
+      - backend
+    networks:
+      - app_network
+
+networks:
+  app_network:
+
+volumes:
+  mssql_data:
+  static_volume:
+  media_volume:
