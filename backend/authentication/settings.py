@@ -71,12 +71,12 @@ CORS_ALLOW_ALL_ORIGINS = False  # Better security
 CORS_ALLOW_CREDENTIALS = True
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
+    "http://localhost",
     "http://frontend_service:80",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:3000",
+    "http://localhost",
     "http://frontend_service",
 ]
 
