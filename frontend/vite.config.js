@@ -3,12 +3,15 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
+  base: "/", // safer if deployed on root
+
+  build: {
+    outDir: "dist",
+  },
+
   server: {
-    host: "0.0.0.0", // Allows access from Docker and network
+    host: "localhost",
     port: 5173,
     strictPort: true,
-    watch: {
-      usePolling: true, // Enables file watching in Docker
-    },
   },
 });

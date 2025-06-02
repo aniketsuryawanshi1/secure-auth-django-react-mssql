@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "../../features/auth/authThunks";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import AuthInput from "./AuthInput";
 import LoadingOverlay from "./LoadingOverlay";
 import { IconUserCircle, IconMail, IconKey } from "@tabler/icons-react";
@@ -108,7 +108,7 @@ const RegisterForm = () => {
       </button>
 
       <p className="login-prompt">
-        Already have an account? <a href="/login">Login here</a>
+        Already have an account? <Link to="/login">Login here</Link>
       </p>
     </form>
   );

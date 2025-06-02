@@ -1,0 +1,44 @@
+.not-found-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f0f4ff, #e9f7ff);
+}
+
+.image-wrapper {
+  max-width: 600px;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.not-found-image {
+  width: 100%;
+  height: auto;
+  animation: float 3s ease-in-out infinite;
+}
+
+.title {
+  font-weight: 700;
+  color: #1c1f4a;
+}
+
+.description {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}

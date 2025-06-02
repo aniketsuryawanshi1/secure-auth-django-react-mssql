@@ -1,29 +1,34 @@
-.dashboard-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #f4f5f7;
+/* Container padding for all screen sizes */
+.container {
+  padding: 1rem;
 }
 
-.dashboard-paper {
-  width: 100%;
-  max-width: 400px;
-  background-color: #ffffff;
+/* Card hover effect */
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.dashboard-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-.dashboard-header .mantine-Button-root {
+/* Avatar and user info spacing */
+.user-info {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 1rem;
 }
 
-.dashboard-header .mantine-Avatar-root {
-  border: 2px solid #e0e0e0;
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .user-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .logout-button {
+    width: 100%;
+    margin-top: 1rem;
+  }
 }

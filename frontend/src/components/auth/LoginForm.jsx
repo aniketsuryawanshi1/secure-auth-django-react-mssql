@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../features/auth/authThunks";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import AuthInput from "./AuthInput";
 import LoadingOverlay from "./LoadingOverlay";
 import { IconUserCircle, IconKey, IconArrowRight } from "@tabler/icons-react";
@@ -69,7 +69,7 @@ const LoginForm = () => {
       </button>
 
       <p className="register-prompt">
-        Don’t have an account? <a href="/register">Register now</a>
+        Don’t have an account? <Link to="/register">Register now</Link>
       </p>
     </form>
   );
